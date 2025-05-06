@@ -9,6 +9,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Notifications } from "@mui/icons-material";
+import Search from "../specific/Search";
+import Notificationing from "../specific/Notifications";
+import NewGroup from "../specific/NewGroup";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -17,6 +20,7 @@ export default function Header() {
   const [isSearch, setIsSearch] = useState(false);
   const [isNewGroup, setIsGroup] = useState(false);
   const [isNotification, setIsNotification] = useState(false);
+
 
   const handleMobile = () => {
     setIsMobile(!ismobile);
@@ -119,7 +123,17 @@ export default function Header() {
 
     {
         isSearch && (
-            
+            <Search/>
+        )
+    }
+     {
+        isNotification && (
+            <Notificationing/>
+        )
+    }
+     {
+        isNewGroup && (
+            <NewGroup/>
         )
     }
 </>

@@ -2,6 +2,9 @@ import React from "react";
 import Header from "./Header";
 import Title from "../shared/Title";
 import { Grid } from "@mui/material";
+import ChatList from "../specific/ChatList"
+
+
 
 export default function Applayout({ content }) {
   return (
@@ -25,7 +28,7 @@ export default function Applayout({ content }) {
           }}
           height={"100%"}
         >
-          first
+          <ChatList chats = {[1 , 2 , 3,4, 5]}/>
         </Grid>
         <Grid
           item
