@@ -2,11 +2,14 @@ import React from "react";
 import Header from "./Header";
 import Title from "../shared/Title";
 import { Grid } from "@mui/material";
-import ChatList from "../specific/ChatList"
-
-
+import ChatList from "../specific/ChatList";
+import { samepleChats } from "../../constants/SampleData";
+import { useParams } from "react-router-dom";
 
 export default function Applayout({ content }) {
+  const params = useParams();
+  const chatId = params.chatId;
+
   return (
     <div>
       <Title title={"Chat App"} />
@@ -28,7 +31,17 @@ export default function Applayout({ content }) {
           }}
           height={"100%"}
         >
-          <ChatList chats = {[1 , 2 , 3,4, 5]}/>
+          <ChatList
+            chats={samepleChats}
+            chatId={chatId}  // Dynamically set chatId from URL
+            newMessagesAlert={[
+              {
+                chatId,
+                count: 4,
+              },
+            ]}
+            onlineUsers={["1", "2"]}
+          />
         </Grid>
         <Grid
           item
@@ -50,9 +63,9 @@ export default function Applayout({ content }) {
             display: { xs: "none", md: "block" },
             padding: "4rem",
             bgcolor: "rgba(0,0,0,0.85)",
-            height: "100%", 
+            height: "100%",
             width: "10%",
-            mr: 5, 
+            mr: 5,
           }}
         >
           third
