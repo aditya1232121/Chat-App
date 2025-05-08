@@ -33,6 +33,8 @@ const StyledLink = styled(Link)(() => ({
   },
 }));
 
+
+// 8 th 
 // Styled input for message or text entry
 const InputBox = styled("input")`
   width: 100%;
