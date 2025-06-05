@@ -51,7 +51,7 @@ export default function Header() {
     <>
     <Box
       sx={{ flexGrow: 1 }}
-      height={"4rem"}
+      height={"3.1rem"}
     >
       <AppBar
         position="static"

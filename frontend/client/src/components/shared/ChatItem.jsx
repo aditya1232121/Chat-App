@@ -11,7 +11,7 @@ export const ChatItem = ({
   sameSender,
   isOnline,
   newMessageAlert,
-  index = 0,
+//  index = 0,
   handleDeleteChat,
 }) => {
   return (
