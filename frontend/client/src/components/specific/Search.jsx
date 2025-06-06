@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dialog, DialogTitle, InputAdornment, List, ListItem, ListItemText, Stack, TextField } from "@mui/material";
 import { useInputValidation } from "6pp"; // agar aapke paas hai
 import { Search as SearchIcon } from "@mui/icons-material";
+import UserItem from "../shared/UserItem";
+import { sampleUsers } from "../../constants/SampleData";
 
 
 export default function Search() {
   const search = useInputValidation("");
-  const users = [] ;
+  const [users , setusers] = useState(sampleUsers) ;
+  const addFriendHandler = (id) => {
+    console.log(id);
+  }
+
+  let isLoadingSendFriendRequest = false ;
 
   return (
     <Dialog open>
@@ -29,11 +36,15 @@ export default function Search() {
           }}
         />
 <List>
-{users.map((user) =>
-{
-  <ListItem>
-    <ListItemText primary={user.name} secondary={user.email} />
-  </ListItem>
+{users.map((user) => {
+  return (
+    <UserItem
+      user={user}
+      key={user._id}
+      handler={addFriendHandler}
+      handlerIsLoading={isLoadingSendFriendRequest}
+    />
+  );
 })}
 
 </List>

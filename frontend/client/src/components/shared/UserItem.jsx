@@ -3,7 +3,7 @@ import { Add as AddIcon, Remove as RemoveIcon } from "@mui/icons-material";
 import { Avatar, IconButton, ListItem, Stack, Typography } from "@mui/material";
 
 export default function UserItem({ user, handler, handlerIsLoading }) {
-  const { name, _id, avatar } = user;
+  const { name, _id, /*avatar */} = user;
 
   return (
     <ListItem>
@@ -11,7 +11,7 @@ export default function UserItem({ user, handler, handlerIsLoading }) {
         direction={"row"}
         alignItems={"center"}
         spacing={"1rem"}
-        width={"100%"}>
+        width={"100%"}>              
         <Avatar />
         <Typography
         variant="body1"
@@ -24,7 +24,18 @@ export default function UserItem({ user, handler, handlerIsLoading }) {
             textOverflow: "ellipsis",
             width: "100%",
           }}>{name}</Typography>
-        <IconButton onClick={() => handler(_id)} disabled={handlerIsLoading}>
+        <IconButton
+          size="small"
+          sx={{
+            bgcolor: "primary.main",
+            color: "white",
+            "&:hover": {
+              bgcolor: "primary.dark",
+            },
+          }}
+          onClick={() => handler(_id)}
+          disabled={handlerIsLoading}
+        >
             <AddIcon/>
         </IconButton>
       </Stack>
