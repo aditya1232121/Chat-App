@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -21,13 +21,27 @@ export default function NewGroup() {
  
 const groupName  = useInputValidation("")
 
+const [members , setmembers] = useState(sampleUsers) ;
+const [selectedMembers, setSelectedMembers] = useState([]) ;
 
-  const selectMemberHandler = () => {
-    console.log("select member handler");
-  };
+
+
+// Toggle hai select nahi hai toh add karo and agar add hai toh emove karo 
+ const selectMemberHandler = (id) => {
+  setSelectedMembers((prevSelected) => {
+    const isAlreadySelected = prevSelected.includes(id);
+
+    if (isAlreadySelected) {
+      return prevSelected.filter((memberId) => memberId !== id); // remove
+    } else {
+      return [...prevSelected, id]; // add
+    }
+  });
+};
+
 
   const submitHandler = () =>{
-    
+    alert("click")
   }
 
   return (
@@ -40,11 +54,12 @@ const groupName  = useInputValidation("")
         <Typography variant="body1"> Memebers </Typography>
 
         <Stack spacing={1}>
-          {sampleUsers.map((user) => (
+          {members.map((user) => (
             <UserItem
               user={user}
               key={user._id}
               handler={selectMemberHandler}
+              isAdded = {selectedMembers.includes(user._id)}
             />
           ))}
         </Stack>

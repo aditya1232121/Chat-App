@@ -1,4 +1,3 @@
-// src/components/layout/Applayout.js
 import React from "react";
 import Header from "./Header";
 import Title from "../shared/Title";
@@ -17,13 +16,18 @@ export default function Applayout({ content }) {
       <Title title={"Chat App"} />
       <Header />
 
-      <Grid container height={"calc(100vh - 4rem)"} sx={{ mt: 2 }}>
-        {/* ChatList (Left side) */}
+      <Grid
+        container
+        height={"calc(100vh - 4rem)"}
+        sx={{ mt: 2 }}
+      >
         <Grid
           item
           sm={3}
+          pt={10}
           sx={{
             paddingX: 2,
+            paddingRight: 4,
             display: { xs: "none", sm: "block" },
             height: "120%",
           }}
@@ -36,28 +40,32 @@ export default function Applayout({ content }) {
           />
         </Grid>
 
-        {/* Center Content */}
-        <Grid item xs={12} sm={6} md={6} lg={6} height={"100%"}>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={6}
+          lg={6}
+          height={"100%"}
+        >
           {content}
         </Grid>
 
-        {/* Profile (Right side) */}
         <Grid
           item
           sx={{
-            width: "350px", // 👈 Fix width
+            width: "350px",
             bgcolor: "rgba(0,0,0,0.85)",
             padding: 3,
             height: "100vh",
             overflowY: "auto",
-            ml: "auto", // 👈 Push to right
+            ml: "auto",
           }}
         >
           <Profile />
         </Grid>
       </Grid>
 
-      {/* Footer */}
       <div style={{ textAlign: "center", padding: "1rem" }}>Footer</div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { Add as AddIcon, Remove as RemoveIcon } from "@mui/icons-material";
 import { Avatar, IconButton, ListItem, Stack, Typography } from "@mui/material";
 
-export default function UserItem({ user, handler, handlerIsLoading }) {
+export default function UserItem({ user, handler, handlerIsLoading , isAdded = false}) {
   const { name, _id, /*avatar */} = user;
 
   return (
@@ -36,7 +36,10 @@ export default function UserItem({ user, handler, handlerIsLoading }) {
           onClick={() => handler(_id)}
           disabled={handlerIsLoading}
         >
-            <AddIcon/>
+          {
+            isAdded ? <RemoveIcon/>  : <AddIcon/>
+          }
+            
         </IconButton>
       </Stack>
     </ListItem>
