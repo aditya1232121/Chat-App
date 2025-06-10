@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from "react";
 import Applayout from "../components/layout/Applayout";
 import { IconButton, Stack } from "@mui/material";
-import { grayColor } from "../constants/color";
+import { grayColor  , orange} from "../constants/color";
 import { AttachFile, Send } from "@mui/icons-material";
 import { InputBox } from "../components/styles/StyledComponents";
 
@@ -37,18 +37,34 @@ export default function Chat() {
               onSubmit={submitHandler}
             >
               <Stack
-              width={"100%"}
+                width={"100%"}
                 direction={"row"}
                 height={"100%"}
                 padding={"1rem"}
                 alignItems={"center"}
                 position={"relative"}
               >
-                <IconButton>
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    left: "1.5rem",
+                    rotate: "30deg",
+                  }}
+                >
                   <AttachFile />
                 </IconButton>
                 <InputBox placeholder="Type Message Here" />
-                <IconButton>
+                <IconButton  type="submit"
+            sx={{
+              rotate: "-30deg",
+              bgcolor: orange,
+              color: "white",
+              marginLeft: "1rem",
+              padding: "0.5rem",
+              "&:hover": {
+                bgcolor: "error.dark",
+              },
+            }}>
                   <Send />
                 </IconButton>
               </Stack>
