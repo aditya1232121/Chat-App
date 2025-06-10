@@ -66,7 +66,7 @@ export const samepleChats = [
           url: "https://www.w3schools.com/howto/img_avatar.png",
         },
       ],
-      content: "",
+      content: "Lauda 2 ka message hai ",
       _id: "sfnsdjkfsdnfkdddjsbnd",
       sender: {
         _id: "sdfsdfsdf",
@@ -153,7 +153,7 @@ export const samepleChats = [
             url: "https://www.w3schools.com/howto/img_avatar.png",
           },
         ],
-        content: "",
+        content: "Laude 2 ka message hai ",
         _id: "sfnsdjkfsdnfkdddjsbnd",
         sender: {
           avatar: "https://www.w3schools.com/howto/img_avatar.png",
