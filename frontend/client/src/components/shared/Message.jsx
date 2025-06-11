@@ -1,13 +1,17 @@
-import { Typography } from "@mui/material";
-import moment from "moment";
 import React from "react";
+import { Typography, Box } from "@mui/material";
+import moment from "moment";
 import { fileFormat } from "../../lib/feature";
+import RenderAttachment from "./RenderAttachment";
 
 export default function Message({ message, user }) {
   const { sender, content, attachments = [], createdAt } = message;
   const sameSender = sender?._id === user._id;
 
-  const timeage = moment(createdAt).fromNow() 
+  console.log(attachments)
+
+  const timeage = moment(createdAt).fromNow();
+
   return (
     <div
       style={{
@@ -19,7 +23,7 @@ export default function Message({ message, user }) {
         width: "fit-content",
       }}
     >
-      {!     sameSender && (
+      {!sameSender && (
         <Typography
           color={"#2694ab"}
           fontWeight={"600"}
@@ -31,24 +35,34 @@ export default function Message({ message, user }) {
 
       {content && <Typography>{content}</Typography>}
 
-{
-    attachments.length > 0 &&  attachments.map((i , index) => {  
-        const url = i.url 
-        const file = fileFormat(url)
-        return <Box key={index} >
-        <a href="" target="_blank" download  style={{
-                  color: "black",
-                }}> </a>
-            </Box>
-    })
-}
+    {attachments.length > 0 &&
+  attachments.map((i, index) => {
+    const url = i.url;
+    const file = fileFormat(url);
+    return (
+      <Box key={index} mt={1}>
+        <a
+          href={url}
+          target="_blank"
+
+          download
+          style={{ color: "black", textDecoration: "underline" }}
+        >
+        {RenderAttachment(file,url)}
+        </a>
+      </Box>
+    );
+  })}
 
 
-      <Typography variant="caption" color={"text.secondary"}>{timeage}</Typography>
+      <Typography
+        variant="caption"
+        color={"text.secondary"}
+      >
+        {timeage}
+      </Typography>
     </div>
   );
 }
 
-
-// moment is used to work with date and time 
-// downlaod is used to download a file when on click 
+// renderattachment not a prop pass but a function call 

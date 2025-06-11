@@ -8,7 +8,7 @@ import { sampleUsers } from "../../constants/SampleData";
 
 export default function Search() {
   const search = useInputValidation("");
-  const [users , setusers] = useState(sampleUsers) ;
+  const [users ] = useState(sampleUsers) ;
   const addFriendHandler = (id) => {
     console.log(id);
   }
