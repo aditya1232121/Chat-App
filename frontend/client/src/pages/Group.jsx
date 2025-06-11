@@ -1,21 +1,65 @@
-import React from "react";
-import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+  Box,
+  Menu,
+} from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { useNavigate } from "react-router-dom";
 
 export default function Group() {
+  const navigate = useNavigate();
 
-const IconBtns = () => {
-  return (
-    <Tooltip title="back">
-      <IconButton>
-        <keyboardBackspaceIcon/>
+  const navigateBack = () => {
+    navigate("/");
+  };
+
+  const MenuOnly = () => {
+    const [isMobileMenuOpen , setIsMobileMenuOpen] = useState(false);
+  
+
+    const handleMobile = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen) ;
+    };
+  
+
+    return (
+      <Box
+        sx={{
+          position: "fixed",
+          top: "1rem",
+          right: "1rem",
+          zIndex: 1000,
+        }}
+      >
+        <Tooltip title="Menu">   
+          <IconButton onClick={handleMobile}>
+            <MoreVertIcon />
+          </IconButton>
+        </Tooltip>
+        <Menu />
+      </Box>
+    );
+  };
+
+  const IconBtns = () => (
+    <Tooltip title="Back">
+      <IconButton
+        size="large"
+        sx={{ alignSelf: "flex-start", mb: 2 }}
+        onClick={navigateBack}
+      >
+        <KeyboardBackspaceIcon fontSize="large" />
       </IconButton>
-      </Tooltip>
-  )
-}
+    </Tooltip>
+  );
 
   return (
     <Grid container height="100vh">
-      
   
       <Grid
         item
@@ -25,8 +69,8 @@ const IconBtns = () => {
           display: {
             xs: "none",
             sm: "block",
-            width : "30rem"
           },
+          width: "30rem",
           bgcolor: "bisque",
           padding: "1rem",
         }}
@@ -34,7 +78,7 @@ const IconBtns = () => {
         <Typography variant="h6">Group List</Typography>
       </Grid>
 
-      {/* Main Content */}
+  
       <Grid
         item
         xs={12}
@@ -42,17 +86,19 @@ const IconBtns = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
           position: "relative",
           padding: "1rem 3rem",
         }}
       >
-        {IconBtns}
-      </Grid>
+      
+        <MenuOnly />
+        <IconBtns />
 
+        <Typography>Welcome to Group Chat</Typography>
+      </Grid>
     </Grid>
   );
 }
-
-
-// grid ====> divinding pages 
+// dividing page
