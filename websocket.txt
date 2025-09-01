@@ -1,0 +1,39 @@
+socket.io === libraray of web socket 
+
+
+web socket -----> bidirectional can send data and recieve data 
+data dend from both client and server
+eg - notification 
+
+http -----> client -----> server    
+client can request data server sends it , sserver cannot request data  
+
+
+
+// io is a circuit , which is for all client 
+server has a circuit 
+
+socket is a single person or client
+every socket has an id 
+
+emit is used to send message or event  
+emit.event == data bhej raha hu 
+
+on.listen mein event ko recieve kar raha hu 
+
+
+
+
+client                                                  sender
+socket.on(event1 , () =>{})                  io.emit(event1 , 'hii')
+
+
+soccket.broadcast.emit()  // current socket ko chodkar sabko message jayega
+
+socket.to().emit(socket_id)   socket sharing each other only 1 socket in io 
+
+
+collection of socket mein data pass karna hai then 
+use join to make room 
+socket.join(room_name)  // add the socket to roon_name
+then send message by io.to(room_id)  // send the message to all client in the room 
